@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=EB+Garamond:ital@0;1&family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
 <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.24.0/dist/tabler-icons.min.css" rel="stylesheet"/>
 <link href="assets/app.css" rel="stylesheet"/>
+<script defer src="assets/products.js"></script>
 <script defer src="assets/app.js"></script>
 </head>
 <body data-page="catalog">
@@ -17,60 +18,99 @@
     <div class="cat-head">
       <div>
         <div class="page-title">Catalog</div>
-        <div class="page-sub">120,000+ medieval &amp; historical props for film</div>
+        <div class="page-sub" id="subcount">medieval &amp; historical props for film</div>
       </div>
       <div class="search" style="flex:1;min-width:260px;max-width:440px">
         <i class="ti ti-search" style="color:var(--searchfg);font-size:19px"></i>
-        <input value="candlestick"/>
-        <button>Search</button>
+        <input id="q" placeholder="Search props or code…"/>
       </div>
     </div>
 
     <div class="cat-layout">
       <aside class="facets frost">
-        <div class="fgroup">
-          <h4>Type</h4>
-          <div class="facet"><i class="ti ti-square-check-filled"></i> Candlestick <span class="n">312</span></div>
-          <div class="facet"><i class="ti ti-square"></i> Lantern <span class="n">540</span></div>
-          <div class="facet"><i class="ti ti-square"></i> Chandelier <span class="n">88</span></div>
-          <div class="facet"><i class="ti ti-square"></i> Sconce <span class="n">196</span></div>
-        </div>
+        <div class="fgroup"><h4>Category</h4><div id="catFacets"></div></div>
         <div class="fgroup">
           <h4>Period</h4>
-          <div class="facet"><i class="ti ti-square-check-filled"></i> 15th century <span class="n">96</span></div>
-          <div class="facet"><i class="ti ti-square"></i> 16th century <span class="n">141</span></div>
-          <div class="facet"><i class="ti ti-square"></i> 17th century <span class="n">75</span></div>
+          <div class="facet"><i class="ti ti-square-check"></i> Medieval</div>
+          <div class="facet off"><i class="ti ti-square"></i> 19th century</div>
         </div>
         <div class="fgroup">
           <h4>Material</h4>
-          <div class="facet"><i class="ti ti-square-check-filled"></i> Brass <span class="n">120</span></div>
-          <div class="facet"><i class="ti ti-square"></i> Pewter <span class="n">64</span></div>
-          <div class="facet"><i class="ti ti-square"></i> Wrought iron <span class="n">52</span></div>
+          <div class="facet"><i class="ti ti-square-check"></i> Oak / wood</div>
+          <div class="facet off"><i class="ti ti-square"></i> Wrought iron</div>
         </div>
         <div class="fgroup">
-          <h4>Price / week</h4>
-          <div class="rng"><span style="left:8%"></span><span style="left:64%"></span></div>
-          <div class="rng-l"><span>120 Kč</span><span>900 Kč</span></div>
+          <h4>Max price / week</h4>
+          <input type="range" id="price" min="1000" max="15000" step="500" value="15000" style="width:100%"/>
+          <div class="rng-l"><span>1 000 Kč</span><span id="priceLbl">15 000 Kč</span></div>
         </div>
       </aside>
 
       <div>
-        <div class="result-bar"><b style="color:var(--headline)">96 props</b> · candlestick, 15th century, brass <span style="margin-left:auto"><i class="ti ti-arrows-sort"></i> Relevance</span></div>
-        <div class="results">
-          <div class="prop frost"><div class="ph" style="background:rgba(190,150,80,.28)"><i class="ti ti-candle" style="font-size:40px;color:var(--btnbg)"></i></div><div class="body"><div class="nm">Brass candlestick, tall</div><div class="chips"><span class="chip">15th c.</span><span class="chip">brass</span></div><div class="pr">240 Kč <small>/wk</small></div></div></div>
-          <div class="prop frost"><div class="ph" style="background:rgba(170,130,70,.28)"><i class="ti ti-candle" style="font-size:40px;color:var(--btnbg)"></i></div><div class="body"><div class="nm">Twin-arm candelabra</div><div class="chips"><span class="chip">15th c.</span><span class="chip">brass</span></div><div class="pr">390 Kč <small>/wk</small></div></div></div>
-          <div class="prop frost"><div class="ph" style="background:rgba(195,158,92,.28)"><i class="ti ti-flame" style="font-size:40px;color:var(--btnbg)"></i></div><div class="body"><div class="nm">Table candle holder</div><div class="chips"><span class="chip">15th c.</span><span class="chip">brass</span></div><div class="pr">180 Kč <small>/wk</small></div></div></div>
-          <div class="prop frost"><div class="ph" style="background:rgba(180,140,78,.28)"><i class="ti ti-candle" style="font-size:40px;color:var(--btnbg)"></i></div><div class="body"><div class="nm">Pricket candlestick</div><div class="chips"><span class="chip">15th c.</span><span class="chip">brass</span></div><div class="pr">210 Kč <small>/wk</small></div></div></div>
-          <div class="prop frost"><div class="ph" style="background:rgba(188,150,84,.28)"><i class="ti ti-flame" style="font-size:40px;color:var(--btnbg)"></i></div><div class="body"><div class="nm">Ornate altar stick</div><div class="chips"><span class="chip">15th c.</span><span class="chip">brass</span></div><div class="pr">450 Kč <small>/wk</small></div></div></div>
-          <div class="prop frost"><div class="ph" style="background:rgba(175,135,72,.28)"><i class="ti ti-candle" style="font-size:40px;color:var(--btnbg)"></i></div><div class="body"><div class="nm">Squat brass holder</div><div class="chips"><span class="chip">15th c.</span><span class="chip">brass</span></div><div class="pr">160 Kč <small>/wk</small></div></div></div>
-          <div class="prop frost"><div class="ph" style="background:rgba(192,154,88,.28)"><i class="ti ti-bulb" style="font-size:40px;color:var(--btnbg)"></i></div><div class="body"><div class="nm">Wall sconce, single</div><div class="chips"><span class="chip">15th c.</span><span class="chip">brass</span></div><div class="pr">230 Kč <small>/wk</small></div></div></div>
-          <div class="prop frost"><div class="ph" style="background:rgba(168,128,68,.28)"><i class="ti ti-flame" style="font-size:40px;color:var(--btnbg)"></i></div><div class="body"><div class="nm">Five-light candelabra</div><div class="chips"><span class="chip">15th c.</span><span class="chip">brass</span></div><div class="pr">620 Kč <small>/wk</small></div></div></div>
-          <div class="prop frost"><div class="ph" style="background:rgba(196,158,90,.28)"><i class="ti ti-candle" style="font-size:40px;color:var(--btnbg)"></i></div><div class="body"><div class="nm">Pilgrim's candlestick</div><div class="chips"><span class="chip">15th c.</span><span class="chip">brass</span></div><div class="pr">200 Kč <small>/wk</small></div></div></div>
+        <div class="result-bar">
+          <b id="cnt" style="color:var(--headline)">—</b>
+          <span id="filterNote"></span>
+          <span style="margin-left:auto;display:flex;align-items:center;gap:8px">Sort
+            <select id="sort" class="sortsel">
+              <option value="rel">Relevance</option>
+              <option value="lo">Price · low to high</option>
+              <option value="hi">Price · high to low</option>
+            </select>
+          </span>
         </div>
+        <div class="results" id="results"></div>
       </div>
     </div>
   </div>
 </div>
-<script>document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.prop').forEach(function(p){p.addEventListener('click',function(){location.href='item.html';});});});</script>
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var P=window.FIP_PRODUCTS||[], CATS=window.FIP_CATS||[];
+  var params=new URLSearchParams(location.search);
+  var state={cats:new Set(),q:'',max:15000,sort:'rel'};
+  if(params.get('cat')&&CATS.indexOf(params.get('cat'))>=0)state.cats.add(params.get('cat'));
+  if(params.get('q')){state.q=params.get('q');document.getElementById('q').value=state.q;}
+  function fmt(n){return n.toLocaleString('cs-CZ');}
+  function pass(p){
+    if(state.cats.size&&!state.cats.has(p.cat))return false;
+    if(state.q){var q=state.q.toLowerCase();if(p.name.toLowerCase().indexOf(q)<0&&p.code.toLowerCase().indexOf(q)<0&&p.cat.toLowerCase().indexOf(q)<0)return false;}
+    if(p.price>state.max)return false;
+    return true;
+  }
+  function renderFacets(){
+    document.getElementById('catFacets').innerHTML=CATS.map(function(c){
+      var n=P.filter(function(p){return p.cat===c}).length;
+      var on=state.cats.has(c),off=state.cats.size&&!on;
+      return '<div class="facet'+(off?' off':'')+'" data-c="'+c+'"><i class="ti ti-'+(on?'square-check':'square')+'"></i> '+c+' <span class="n">'+n+'</span></div>';
+    }).join('');
+    document.querySelectorAll('#catFacets .facet').forEach(function(el){el.onclick=function(){var c=el.getAttribute('data-c');if(state.cats.has(c))state.cats.delete(c);else state.cats.add(c);render();};});
+  }
+  function render(){
+    renderFacets();
+    var list=P.filter(pass);
+    if(state.sort==='lo')list.sort(function(a,b){return a.price-b.price});
+    else if(state.sort==='hi')list.sort(function(a,b){return b.price-a.price});
+    document.getElementById('cnt').textContent=list.length+' props';
+    document.getElementById('subcount').textContent=P.length+'+ medieval & historical props for film';
+    var note=[];
+    if(state.cats.size)note.push(Array.from(state.cats).join(', '));
+    document.getElementById('filterNote').textContent=note.length?' · '+note.join(' · '):' · all categories';
+    var r=document.getElementById('results');
+    if(!list.length){r.innerHTML='<div class="empty">No props match these filters.</div>';return;}
+    r.innerHTML=list.map(function(p){
+      return '<a class="prop frost" href="item.html?code='+encodeURIComponent(p.code)+'">'
+        +'<div class="ph"><img loading="lazy" src="'+p.img+'" alt="'+p.name+'"></div>'
+        +'<div class="body"><div class="nm">'+p.name+'</div><div class="code">'+p.code+'</div>'
+        +'<div class="pr"><span>'+fmt(p.price)+' Kč <small>/wk</small></span>'
+        +'<span class="loc"><i class="ti ti-map-pin" style="font-size:12px"></i>'+p.loc+'</span></div></div></a>';
+    }).join('');
+  }
+  document.getElementById('q').addEventListener('input',function(){state.q=this.value.trim();render();});
+  document.getElementById('sort').addEventListener('change',function(){state.sort=this.value;render();});
+  document.getElementById('price').addEventListener('input',function(){state.max=+this.value;document.getElementById('priceLbl').textContent=fmt(+this.value)+' Kč';render();});
+  render();
+});
+</script>
 </body>
 </html>

@@ -39,13 +39,13 @@
     <a class="link${act('catalog')}" href="catalog.html">Catalog</a>
     <a class="link" href="#">Productions</a>
     <a class="link${act('about')}" href="about.html">About</a>
-    <a class="link" href="#">Contact</a>
+    <a class="link${act('contact')}" href="contact.html">Contact</a>
     <span style="flex:1"></span>
     <span class="lang"><b>EN</b> · CZ · DE · HU</span>
     <button class="tbtn" id="toggle" aria-label="Toggle day or night"><i class="ti ti-moon"></i></button>
     <a class="login" href="login.html"><i class="ti ti-user" style="font-size:14px"></i> Client login</a>
     <button class="menu-btn" id="menuBtn" aria-label="Menu"><i class="ti ti-menu-2"></i></button>
-    <div class="mmenu" id="mmenu"><a href="catalog.html">Catalog</a><a href="#">Productions</a><a href="about.html">About</a><a href="#">Contact</a></div>
+    <div class="mmenu" id="mmenu"><a href="catalog.html">Catalog</a><a href="#">Productions</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
   </nav></div></header>`;
   document.body.insertAdjacentHTML('afterbegin',BACKDROP+HEADER);
 
