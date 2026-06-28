@@ -31,13 +31,13 @@
         <div class="fgroup"><h4>Category</h4><div id="catFacets"></div></div>
         <div class="fgroup">
           <h4>Period</h4>
-          <div class="facet"><i class="ti ti-square-check"></i> Medieval</div>
-          <div class="facet off"><i class="ti ti-square"></i> 19th century</div>
+          <div class="facet" data-g="period" data-v="Medieval"><i class="ti ti-square-check"></i> Medieval <span class="n" id="nMed"></span></div>
+          <div class="facet off" data-g="period" data-v="19th century"><i class="ti ti-square"></i> 19th century <span class="n">0</span></div>
         </div>
         <div class="fgroup">
           <h4>Material</h4>
-          <div class="facet"><i class="ti ti-square-check"></i> Oak / wood</div>
-          <div class="facet off"><i class="ti ti-square"></i> Wrought iron</div>
+          <div class="facet" data-g="material" data-v="Oak / wood"><i class="ti ti-square-check"></i> Oak / wood <span class="n" id="nOak"></span></div>
+          <div class="facet off" data-g="material" data-v="Wrought iron"><i class="ti ti-square"></i> Wrought iron <span class="n">0</span></div>
         </div>
         <div class="fgroup">
           <h4>Max price / week</h4>
@@ -67,13 +67,16 @@
 <script>
 document.addEventListener('DOMContentLoaded',function(){
   var P=window.FIP_PRODUCTS||[], CATS=window.FIP_CATS||[];
+  P.forEach(function(p){p.period='Medieval';p.material='Oak / wood';});
   var params=new URLSearchParams(location.search);
-  var state={cats:new Set(),q:'',max:15000,sort:'rel'};
+  var state={cats:new Set(),period:new Set(['Medieval']),material:new Set(['Oak / wood']),q:'',max:15000,sort:'rel'};
   if(params.get('cat')&&CATS.indexOf(params.get('cat'))>=0)state.cats.add(params.get('cat'));
   if(params.get('q')){state.q=params.get('q');document.getElementById('q').value=state.q;}
   function fmt(n){return n.toLocaleString('cs-CZ');}
   function pass(p){
     if(state.cats.size&&!state.cats.has(p.cat))return false;
+    if(state.period.size&&!state.period.has(p.period))return false;
+    if(state.material.size&&!state.material.has(p.material))return false;
     if(state.q){var q=state.q.toLowerCase();if(p.name.toLowerCase().indexOf(q)<0&&p.code.toLowerCase().indexOf(q)<0&&p.cat.toLowerCase().indexOf(q)<0)return false;}
     if(p.price>state.max)return false;
     return true;
@@ -106,9 +109,26 @@ document.addEventListener('DOMContentLoaded',function(){
         +'<span class="loc"><i class="ti ti-map-pin" style="font-size:12px"></i>'+p.loc+'</span></div></div></a>';
     }).join('');
   }
+  function bindStatic(){
+    document.querySelectorAll('.facet[data-g]').forEach(function(el){
+      el.onclick=function(){
+        var g=el.getAttribute('data-g'),v=el.getAttribute('data-v'),set=state[g];
+        if(set.has(v))set.delete(v);else set.add(v);
+        el.querySelector('i').className='ti ti-'+(set.has(v)?'square-check':'square');
+        el.classList.toggle('off',!set.has(v));
+        render();
+      };
+    });
+  }
+  function styleRange(el){var pct=(el.value-el.min)/(el.max-el.min)*100;el.style.background='linear-gradient(to right, var(--btnbg) '+pct+'%, var(--cardborder) '+pct+'%)';}
+  var price=document.getElementById('price');
   document.getElementById('q').addEventListener('input',function(){state.q=this.value.trim();render();});
   document.getElementById('sort').addEventListener('change',function(){state.sort=this.value;render();});
-  document.getElementById('price').addEventListener('input',function(){state.max=+this.value;document.getElementById('priceLbl').textContent=fmt(+this.value)+' Kč';render();});
+  price.addEventListener('input',function(){state.max=+this.value;document.getElementById('priceLbl').textContent=fmt(+this.value)+' Kč';styleRange(this);render();});
+  document.getElementById('nMed').textContent=P.length;
+  document.getElementById('nOak').textContent=P.length;
+  bindStatic();
+  styleRange(price);
   render();
 });
 </script>
