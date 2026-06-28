@@ -131,10 +131,31 @@ footer{padding:34px 0;color:var(--muted);font-size:13px}
 .more-row{margin-top:48px}
 .more-row h3{font-family:'Cinzel',serif;font-size:13px;letter-spacing:2px;color:var(--eyebrow);font-weight:500;margin-bottom:16px;text-transform:uppercase}
 
+/* about */
+.about-hero{position:relative;border-radius:18px;overflow:hidden;height:clamp(260px,46vh,440px);margin-bottom:36px;box-shadow:0 18px 50px rgba(20,12,4,.22)}
+.about-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph-day{opacity:calc(1 - var(--t,0))}
+.ph-night{opacity:var(--t,0)}
+.about-hero .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,8,5,.12) 30%,rgba(8,6,3,.62))}
+.about-hero .cap{position:absolute;left:0;bottom:0;padding:30px 32px}
+.about-hero .cap .ttl{font-family:'Cinzel',serif;font-size:clamp(28px,4.4vw,44px);color:#fbf3e2;font-weight:600}
+.about-hero .cap .sub{font-family:'EB Garamond',serif;font-style:italic;color:rgba(251,243,226,.86);font-size:16px;margin-top:6px}
+.about-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:32px;align-items:start}
+.prose p{color:var(--subtext);line-height:1.75;margin-bottom:14px;font-size:15px}
+.prose h2{font-family:'Cinzel',serif;font-size:18px;color:var(--headline);margin:24px 0 10px;font-weight:600}
+.prod-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.prod{background:var(--searchbg);border:0.5px solid var(--cardborder);border-radius:7px;padding:5px 11px;font-size:12px;color:var(--subtext)}
+.side-card{border-radius:16px;padding:22px}
+.side-card h3{font-family:'Cinzel',serif;font-size:13px;color:var(--eyebrow);letter-spacing:1px;font-weight:500;margin-bottom:6px;text-transform:uppercase}
+.info-row{display:flex;gap:11px;align-items:flex-start;font-size:13px;color:var(--subtext);padding:10px 0;border-bottom:0.5px solid var(--cardborder)}
+.info-row i{color:var(--btnbg);font-size:16px;margin-top:1px}
+.info-row b{color:var(--headline);font-weight:500}
+
 @media (max-width:860px){
   .cat-layout{grid-template-columns:1fr}
   .facets{order:-1}
   .item-layout{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr}
 }
 @media (max-width:760px){
   .wrap{padding:0 20px}
