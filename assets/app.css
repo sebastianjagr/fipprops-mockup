@@ -168,10 +168,11 @@ input[type=range]::-moz-range-track{background:var(--cardborder);height:5px;bord
 
 /* productions */
 .prodgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(234px,1fr));gap:18px}
-.pcard{border-radius:14px;padding:22px;position:relative;overflow:hidden;transition:transform .16s ease,box-shadow .16s ease}
+.pcard{border-radius:14px;padding:22px;position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:172px;transition:transform .16s ease,box-shadow .16s ease}
 .pcard:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(20,12,4,.2)}
 .pcard .yr{font-size:12px;color:var(--muted);letter-spacing:.5px}
 .pcard .ptt{font-family:'Cinzel',serif;font-size:18px;color:var(--headline);font-weight:600;margin:8px 0 14px;line-height:1.25}
+.pcard .fmt{margin-top:auto;align-self:flex-start}
 .pcard .ic{position:absolute;top:16px;right:18px;color:var(--eyebrow);font-size:22px;opacity:.55}
 .fmt{display:inline-flex;align-items:center;gap:5px;background:var(--searchbg);border:0.5px solid var(--cardborder);color:var(--subtext);font-size:11px;padding:3px 10px;border-radius:7px}
 
