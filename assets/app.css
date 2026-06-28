@@ -103,9 +103,38 @@ footer{padding:34px 0;color:var(--muted);font-size:13px}
 .login-foot{text-align:center;font-size:12px;color:var(--muted);margin-top:18px;line-height:1.6}
 .login-foot a{color:var(--eyebrow);text-decoration:none}
 
+/* item detail */
+.crumb{font-size:13px;color:var(--muted);margin-bottom:14px}
+.crumb a{color:var(--muted);text-decoration:none}
+.item-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:start}
+.gmain{border-radius:16px;height:420px;display:flex;align-items:center;justify-content:center}
+.gthumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}
+.gthumb{border-radius:11px;height:84px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.item-info{border-radius:16px;padding:26px}
+.item-info .type{font-size:12px;letter-spacing:1.5px;color:var(--eyebrow);text-transform:uppercase}
+.item-info h1{font-family:'Cinzel',serif;font-size:30px;color:var(--headline);font-weight:600;margin:8px 0 12px}
+.chips-lg{display:flex;gap:7px;flex-wrap:wrap}
+.chip-lg{background:var(--searchbg);color:var(--subtext);font-size:12px;padding:4px 10px;border-radius:7px;border:0.5px solid var(--cardborder)}
+.price-big{font-family:'Cinzel',serif;font-size:30px;color:var(--eyebrow);margin:16px 0 4px}
+.price-big small{font-size:13px;color:var(--muted);font-family:'Inter',sans-serif}
+.avail{border-top:0.5px solid var(--cardborder);border-bottom:0.5px solid var(--cardborder);padding:16px 0;margin:16px 0}
+.avail .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.date{background:var(--searchbg);border:0.5px solid var(--cardborder);border-radius:9px;padding:9px 12px;font-size:13px;color:var(--headline)}
+.btn-primary{background:var(--btnbg);color:var(--btntext);border:none;border-radius:9px;padding:11px 18px;font-family:inherit;font-size:14px;cursor:pointer}
+.btn-ghost{background:transparent;border:0.5px solid var(--cardborder);color:var(--nav);border-radius:9px;padding:11px 18px;font-family:inherit;font-size:14px;cursor:pointer}
+.signin-note{font-size:12px;color:var(--muted);margin-top:10px}
+.idesc{font-family:'EB Garamond',serif;font-style:italic;font-size:16px;color:var(--subtext);line-height:1.55;margin:14px 0}
+.spec{width:100%;font-size:13px;border-collapse:collapse;margin-top:4px}
+.spec td{padding:7px 0;border-bottom:0.5px solid var(--cardborder)}
+.spec td:first-child{color:var(--muted)}
+.spec td:last-child{text-align:right;color:var(--headline)}
+.more-row{margin-top:48px}
+.more-row h3{font-family:'Cinzel',serif;font-size:13px;letter-spacing:2px;color:var(--eyebrow);font-weight:500;margin-bottom:16px;text-transform:uppercase}
+
 @media (max-width:860px){
   .cat-layout{grid-template-columns:1fr}
   .facets{order:-1}
+  .item-layout{grid-template-columns:1fr}
 }
 @media (max-width:760px){
   .wrap{padding:0 20px}
